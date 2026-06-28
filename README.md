@@ -1,0 +1,2 @@
+# MBTI_OMMI
+mbti
