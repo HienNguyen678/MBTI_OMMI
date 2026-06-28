@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trắc nghiệm tính cách MBTI – Khám phá 16 nhóm tính cách</title>
+<meta name="description" content="Bài trắc nghiệm MBTI tiếng Việt miễn phí: 24 câu, tự động tính ra 1 trong 16 nhóm tính cách kèm mô tả điểm mạnh, điểm yếu và nghề nghiệp phù hợp.">
+<meta name="theme-color" content="#0f1220">
+<!-- Open Graph / chia sẻ mạng xã hội -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Trắc nghiệm tính cách MBTI – Bạn thuộc nhóm nào?">
+<meta property="og:description" content="Làm bài test 5 phút để khám phá 1 trong 16 nhóm tính cách MBTI của bạn.">
+<meta property="og:locale" content="vi_VN">
+<!-- Muốn có ảnh preview khi chia sẻ: thêm dòng dưới và thay bằng link ảnh của bạn
+<meta property="og:image" content="https://ten-mien-cua-ban/anh-preview.png"> -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Trắc nghiệm tính cách MBTI – Bạn thuộc nhóm nào?">
+<meta name="twitter:description" content="Làm bài test 5 phút để khám phá 1 trong 16 nhóm tính cách MBTI của bạn.">
+<style>
+  :root{
+    --bg:#0f1220; --card:#1a1f35; --card2:#232a45; --accent:#6c8cff; --accent2:#9d7bff;
+    --text:#e8ebf7; --muted:#9aa3c4; --good:#4cd3a5; --line:#2c3358;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    background:radial-gradient(1200px 600px at 70% -10%,#243056 0%,var(--bg) 60%);color:var(--text);min-height:100vh}
+  .wrap{max-width:760px;margin:0 auto;padding:24px 18px 60px}
+  h1{font-size:26px;margin:0 0 6px;letter-spacing:.3px}
+  .sub{color:var(--muted);font-size:14px;margin-bottom:22px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:18px;
+    box-shadow:0 10px 30px rgba(0,0,0,.25)}
+  .btn{appearance:none;border:none;cursor:pointer;border-radius:12px;padding:13px 20px;font-size:15px;font-weight:600;
+    color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent2));transition:transform .08s ease,opacity .2s}
+  .btn:hover{transform:translateY(-1px)}
+  .btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+  .btn.ghost{background:transparent;border:1px solid var(--line);color:var(--text)}
+  .btn.sm{padding:10px 14px;font-size:13.5px}
+  .row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+  .tips{list-style:none;padding:0;margin:14px 0 0}
+  .tips li{padding:9px 0 9px 28px;position:relative;color:#d4daf2;font-size:14.5px;line-height:1.5;border-top:1px solid var(--line)}
+  .tips li:first-child{border-top:none}
+  .tips li::before{content:"✓";position:absolute;left:0;top:9px;color:var(--good);font-weight:700}
+  .progress{height:8px;background:var(--card2);border-radius:99px;overflow:hidden;margin-bottom:18px}
+  .progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .35s ease}
+  .qnum{color:var(--muted);font-size:13px;margin-bottom:8px;letter-spacing:.5px}
+  .qtext{font-size:19px;font-weight:600;line-height:1.45;margin-bottom:18px}
+  .opts{display:flex;flex-direction:column;gap:10px}
+  .opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:13px 16px;border-radius:12px;
+    background:var(--card2);border:1px solid transparent;color:var(--text);cursor:pointer;font-size:15px;transition:.15s}
+  .opt:hover{border-color:var(--accent)}
+  .opt.sel{border-color:var(--accent);background:#2a335c}
+  .dot{width:18px;height:18px;border-radius:50%;border:2px solid var(--muted);flex:0 0 auto}
+  .opt.sel .dot{border-color:var(--accent);background:var(--accent);box-shadow:0 0 0 3px rgba(108,140,255,.25)}
+  .nav{display:flex;justify-content:space-between;margin-top:22px;gap:10px}
+  .typecode{font-size:46px;font-weight:800;letter-spacing:2px;background:linear-gradient(135deg,var(--accent),var(--accent2));
+    -webkit-background-clip:text;background-clip:text;color:transparent;margin:0}
+  .typename{font-size:20px;font-weight:700;margin:2px 0 4px}
+  .bars{margin:18px 0 6px}
+  .bar{margin:12px 0}
+  .bar .lbls{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-bottom:6px}
+  .bar .lbls b{color:var(--text)}
+  .track{height:12px;background:var(--card2);border-radius:99px;position:relative;overflow:hidden}
+  .track > i{position:absolute;top:0;bottom:0;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:99px}
+  .sec{margin-top:16px}
+  .sec h4{margin:0 0 6px;font-size:14px;color:var(--accent);text-transform:uppercase;letter-spacing:1px}
+  .sec p{margin:0;color:#d4daf2;line-height:1.6;font-size:15px}
+  .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+  .tag{background:var(--card2);border:1px solid var(--line);border-radius:99px;padding:6px 12px;font-size:13px;color:#cfd6f2}
+  .grid16{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:14px}
+  .mini{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:12px;cursor:pointer;transition:.15s}
+  .mini:hover{border-color:var(--accent);transform:translateY(-2px)}
+  .mini .c{font-weight:800;letter-spacing:1px;color:var(--accent)}
+  .mini .n{font-size:12.5px;color:var(--muted);margin-top:2px}
+  .banner{background:linear-gradient(135deg,rgba(108,140,255,.18),rgba(157,123,255,.18));
+    border:1px solid var(--accent);border-radius:12px;padding:14px 16px;margin-bottom:16px;font-size:14.5px;line-height:1.55}
+  .share-btn{display:inline-flex;align-items:center;gap:8px}
+  .fb{background:#1877f2!important}
+  .x{background:#111!important;border:1px solid #333!important}
+  .hidden{display:none}
+  .foot{color:var(--muted);font-size:12px;text-align:center;margin-top:26px;line-height:1.6}
+  a{color:var(--accent)}
+  .toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:#2a335c;
+    border:1px solid var(--accent);color:#fff;padding:12px 20px;border-radius:12px;font-size:14px;opacity:0;
+    pointer-events:none;transition:.25s;z-index:99}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ===== INTRO ===== -->
+  <section id="intro">
+    <h1>🧭 Trắc nghiệm tính cách MBTI</h1>
+    <div class="sub">24 câu hỏi · khoảng 5 phút · tự động tính ra 1 trong 16 nhóm tính cách</div>
+
+    <div class="card">
+      <div style="font-size:17px;font-weight:700;margin-bottom:6px">Cách trả lời để có kết quả CHÍNH XÁC nhất</div>
+      <p style="color:var(--muted);margin:0;font-size:14px;line-height:1.6">MBTI chỉ đúng khi bạn trả lời thật. Vài nguyên tắc quan trọng:</p>
+      <ul class="tips">
+        <li>Trả lời theo <b>con người tự nhiên</b> của bạn — không phải con người bạn <i>mong muốn</i> hay công việc <i>bắt buộc</i> bạn phải thể hiện.</li>
+        <li>Nghĩ về cách bạn cư xử khi <b>thoải mái, được là chính mình</b>, chứ không phải lúc đang gồng theo vai trò.</li>
+        <li><b>Đừng nghĩ quá lâu.</b> Phản ứng đầu tiên thường đúng nhất. Tránh chọn "trung lập" trừ khi thật sự lưỡng lự.</li>
+        <li>Làm test khi tâm trạng <b>bình thường, không quá vui hay quá buồn.</b></li>
+        <li>Không có đáp án "tốt" hay "xấu" — mọi nhóm tính cách đều có giá trị riêng.</li>
+      </ul>
+    </div>
+
+    <div class="row">
+      <button class="btn" onclick="start()">Bắt đầu làm test →</button>
+      <button class="btn ghost" onclick="shareSite()">🔗 Chia sẻ bài test</button>
+    </div>
+
+    <div class="card" style="margin-top:18px">
+      <div style="font-size:15px;font-weight:700;margin-bottom:4px">Hoặc xem trước mô tả 16 nhóm</div>
+      <div id="grid16intro" class="grid16"></div>
+    </div>
+  </section>
+
+  <!-- ===== QUIZ ===== -->
+  <section id="quiz" class="hidden">
+    <div class="progress"><i id="bar"></i></div>
+    <div class="card">
+      <div class="qnum" id="qnum"></div>
+      <div class="qtext" id="qtext"></div>
+      <div class="opts" id="opts"></div>
+      <div class="nav">
+        <button class="btn ghost" id="prev" onclick="prev()">← Quay lại</button>
+        <button class="btn" id="next" onclick="next()" disabled>Tiếp tục →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RESULT ===== -->
+  <section id="result" class="hidden">
+    <div id="sharedBanner" class="banner hidden"></div>
+
+    <div class="card" style="text-align:center">
+      <div class="qnum" id="rkicker">KẾT QUẢ CỦA BẠN</div>
+      <p class="typecode" id="rcode">—</p>
+      <div class="typename" id="rname"></div>
+      <div style="color:var(--muted);font-size:14px" id="rtag"></div>
+      <div class="bars" id="rbars"></div>
+    </div>
+
+    <div class="card">
+      <div class="sec"><h4>Tổng quan</h4><p id="rsum"></p></div>
+      <div class="sec"><h4>Điểm mạnh</h4><p id="rstr"></p></div>
+      <div class="sec"><h4>Điểm cần lưu ý</h4><p id="rwk"></p></div>
+      <div class="sec"><h4>Nghề nghiệp phù hợp</h4><div class="tags" id="rcar"></div></div>
+    </div>
+
+    <div class="card">
+      <div style="font-weight:700;margin-bottom:10px">Chia sẻ kết quả của bạn</div>
+      <div class="row" style="justify-content:flex-start">
+        <button class="btn sm share-btn" onclick="nativeShare()">📲 Chia sẻ</button>
+        <button class="btn sm share-btn fb" onclick="shareFB()">f Facebook</button>
+        <button class="btn sm share-btn x" onclick="shareX()">𝕏 Đăng lên X</button>
+        <button class="btn sm ghost share-btn" onclick="copyResultLink()">🔗 Copy link</button>
+      </div>
+    </div>
+
+    <div class="row">
+      <button class="btn" id="retakeBtn" onclick="restart()">↻ Làm lại</button>
+    </div>
+
+    <div class="card" style="margin-top:18px">
+      <div style="font-size:15px;font-weight:700;margin-bottom:4px">Khám phá cả 16 nhóm</div>
+      <div id="grid16res" class="grid16"></div>
+    </div>
+  </section>
+
+  <div class="foot">
+    Công cụ tham khảo dựa trên 4 cặp xu hướng của MBTI (E/I · S/N · T/F · J/P).<br>
+    Đây không phải bài kiểm tra MBTI® chính thức, mà là phiên bản tự đánh giá để bạn hiểu thêm về bản thân.
+  </div>
+</div>
+<div id="toast" class="toast"></div>
+
+<script>
+/* ============ DỮ LIỆU CÂU HỎI ============ */
+const QUESTIONS = [
+  {dim:'EI', pole:'first',  t:'Tôi nạp lại năng lượng khi được ở giữa nhiều người và giao tiếp sôi nổi.'},
+  {dim:'EI', pole:'first',  t:'Tôi thường chủ động bắt chuyện, kể cả với người lạ.'},
+  {dim:'EI', pole:'first',  t:'Tôi suy nghĩ rõ ràng hơn khi được nói ra thành lời với người khác.'},
+  {dim:'EI', pole:'second', t:'Sau một buổi tụ tập đông người, tôi cần thời gian ở một mình để hồi sức.'},
+  {dim:'EI', pole:'second', t:'Tôi thích trò chuyện sâu 1-1 hơn là tiệc tùng ồn ào.'},
+  {dim:'EI', pole:'second', t:'Tôi cần ngẫm kỹ trong đầu trước khi phát biểu.'},
+  {dim:'SN', pole:'first',  t:'Tôi chú ý đến chi tiết cụ thể và sự thật thực tế hơn là ý tưởng trừu tượng.'},
+  {dim:'SN', pole:'first',  t:'Tôi tin vào kinh nghiệm đã được kiểm chứng hơn là linh cảm.'},
+  {dim:'SN', pole:'first',  t:'Tôi thích những việc rõ ràng, thực tế, áp dụng được ngay.'},
+  {dim:'SN', pole:'second', t:'Tôi hay nghĩ về tương lai và những khả năng chưa xảy ra.'},
+  {dim:'SN', pole:'second', t:'Tôi thích tìm ý nghĩa ẩn sau sự việc và liên kết các ý tưởng với nhau.'},
+  {dim:'SN', pole:'second', t:'Lý thuyết và ý tưởng mới cuốn hút tôi hơn là chi tiết vụn vặt.'},
+  {dim:'TF', pole:'first',  t:'Khi ra quyết định, tôi ưu tiên logic và sự công bằng hơn cảm xúc.'},
+  {dim:'TF', pole:'first',  t:'Tôi thấy góp ý thẳng thắn quan trọng hơn việc giữ cho ai cũng vui.'},
+  {dim:'TF', pole:'first',  t:'Tôi cố phân tích vấn đề khách quan, ít để cảm xúc chi phối.'},
+  {dim:'TF', pole:'second', t:'Tôi luôn cân nhắc cảm xúc của mọi người khi đưa ra quyết định.'},
+  {dim:'TF', pole:'second', t:'Tôi dễ đồng cảm và cảm nhận được tâm trạng của người khác.'},
+  {dim:'TF', pole:'second', t:'Giữ hòa khí trong nhóm quan trọng với tôi hơn là thắng một cuộc tranh luận.'},
+  {dim:'JP', pole:'first',  t:'Tôi thích lập kế hoạch và lịch trình rõ ràng trước khi bắt tay làm.'},
+  {dim:'JP', pole:'first',  t:'Tôi thấy dễ chịu khi mọi việc đã được quyết định và sắp xếp xong xuôi.'},
+  {dim:'JP', pole:'first',  t:'Tôi thường hoàn thành công việc sớm, trước hạn chót.'},
+  {dim:'JP', pole:'second', t:'Tôi thích giữ các lựa chọn mở và linh hoạt tùy tình huống.'},
+  {dim:'JP', pole:'second', t:'Tôi làm việc tốt nhất khi ứng biến tự phát hơn là theo kế hoạch cứng nhắc.'},
+  {dim:'JP', pole:'second', t:'Tôi hay để đến sát hạn chót mới bắt đầu làm.'}
+];
+
+const SCALE = [
+  {v:-2, l:'Hoàn toàn không đúng với tôi'},
+  {v:-1, l:'Khá không đúng'},
+  {v: 0, l:'Trung lập / tùy lúc'},
+  {v: 1, l:'Khá đúng'},
+  {v: 2, l:'Hoàn toàn đúng với tôi'}
+];
+
+const TYPES = {
+  ISTJ:{n:'Người Trách Nhiệm',tag:'Logistician',s:'Thực tế, đáng tin và có trách nhiệm cao. Bạn coi trọng truyền thống, quy củ và làm việc một cách bài bản, chắc chắn. Đã nhận là làm tới nơi tới chốn.',st:'Kỷ luật, kiên định, tỉ mỉ, đáng tin cậy, có tổ chức.',wk:'Đôi khi quá cứng nhắc, ngại thay đổi và khó linh hoạt với cảm xúc người khác.',car:['Kế toán','Kiểm toán','Quản lý dự án','Luật','Hành chính','Kỹ sư']},
+  ISFJ:{n:'Người Nuôi Dưỡng',tag:'Defender',s:'Ấm áp, tận tâm và luôn âm thầm chăm lo cho người khác. Bạn ghi nhớ chi tiết về mọi người và sẵn sàng hy sinh vì tập thể.',st:'Chu đáo, kiên nhẫn, tận tụy, trung thành, thực tế.',wk:'Hay ngại từ chối, dễ ôm việc vào mình và ít khi đòi hỏi cho bản thân.',car:['Điều dưỡng','Giáo viên','Nhân sự','Công tác xã hội','Chăm sóc khách hàng']},
+  INFJ:{n:'Người Cố Vấn',tag:'Advocate',s:'Lý tưởng, sâu sắc và giàu trực giác về con người. Bạn luôn tìm kiếm ý nghĩa và muốn tạo ra tác động tích cực cho thế giới.',st:'Sâu sắc, đồng cảm, có tầm nhìn, tận tâm, sáng tạo.',wk:'Dễ kiệt sức vì lý tưởng quá cao, hay suy nghĩ nhiều và khắt khe với bản thân.',car:['Tâm lý','Tư vấn','Viết lách','Nhân sự','Giáo dục','Phi lợi nhuận']},
+  INTJ:{n:'Nhà Kiến Trúc',tag:'Architect',s:'Chiến lược, độc lập và tư duy hệ thống. Bạn nhìn xa, lập kế hoạch dài hạn và luôn muốn tối ưu mọi thứ bằng logic.',st:'Tầm nhìn, quyết đoán, độc lập, tư duy chiến lược, tự học giỏi.',wk:'Đôi khi quá cầu toàn, lạnh lùng và thiếu kiên nhẫn với những điều "kém hiệu quả".',car:['Khoa học dữ liệu','Chiến lược','Kỹ sư','Nghiên cứu','Đầu tư','CEO/Founder']},
+  ISTP:{n:'Nhà Kỹ Thuật',tag:'Virtuoso',s:'Thực dụng, bình tĩnh và giỏi xử lý vấn đề bằng tay. Bạn thích khám phá cách mọi thứ vận hành và hành động linh hoạt theo tình huống.',st:'Bình tĩnh, khéo léo, logic, thích nghi nhanh, giải quyết sự cố giỏi.',wk:'Dễ chán việc lặp lại, ngại cam kết dài hạn và đôi khi quá kiệm lời cảm xúc.',car:['Kỹ thuật','Cơ khí','IT/Bảo mật','Phi công','Đầu bếp','Vận động viên']},
+  ISFP:{n:'Nghệ Sĩ',tag:'Adventurer',s:'Nhẹ nhàng, tinh tế và sống theo cảm nhận. Bạn yêu cái đẹp, trân trọng hiện tại và thể hiện bản thân qua hành động hơn lời nói.',st:'Sáng tạo, nhạy cảm thẩm mỹ, ấm áp, linh hoạt, chân thành.',wk:'Dễ né tránh xung đột, thiếu kế hoạch dài hạn và hay tự ti.',car:['Thiết kế','Nghệ thuật','Nhiếp ảnh','Ẩm thực','Chăm sóc sức khỏe','Thời trang']},
+  INFP:{n:'Người Hòa Giải',tag:'Mediator',s:'Lý tưởng, giàu trí tưởng tượng và trung thành với giá trị bên trong. Bạn muốn sống đúng với bản thân và giúp người khác tốt đẹp hơn.',st:'Đồng cảm sâu, sáng tạo, tận tâm với giá trị, cởi mở, chân thật.',wk:'Hay mơ mộng, dễ tổn thương, ngại thực tế khô khan và đôi khi thiếu quyết đoán.',car:['Viết lách','Tâm lý','Thiết kế','Giáo dục','Phi lợi nhuận','Nội dung sáng tạo']},
+  INTP:{n:'Nhà Tư Duy',tag:'Logician',s:'Tò mò, logic và mê phân tích. Bạn thích mổ xẻ ý tưởng, đặt câu hỏi "tại sao" và xây dựng những mô hình tư duy mạch lạc.',st:'Phân tích sắc bén, sáng tạo ý tưởng, khách quan, ham học, độc lập.',wk:'Hay trì hoãn, sa đà lý thuyết, ít để ý cảm xúc và chi tiết thực thi.',car:['Lập trình','Nghiên cứu','Khoa học','Phân tích dữ liệu','Triết học','Toán/Vật lý']},
+  ESTP:{n:'Người Năng Động',tag:'Entrepreneur',s:'Nhanh nhạy, gan dạ và thích hành động. Bạn sống trong hiện tại, ứng biến giỏi và tỏa sáng khi mọi thứ chuyển động nhanh.',st:'Quyết đoán, thực tế, lôi cuốn, giỏi xử lý khủng hoảng, dám mạo hiểm.',wk:'Dễ bốc đồng, ngại quy tắc và đôi khi thiếu kiên nhẫn với kế hoạch dài.',car:['Kinh doanh','Bán hàng','Khởi nghiệp','Marketing','Thể thao','Cứu hộ/An ninh']},
+  ESFP:{n:'Người Trình Diễn',tag:'Entertainer',s:'Vui vẻ, nhiệt tình và mang năng lượng tích cực đến mọi nơi. Bạn yêu trải nghiệm, kết nối và làm cho khoảnh khắc trở nên sống động.',st:'Hoạt náo, thân thiện, thực tế, linh hoạt, giàu năng lượng.',wk:'Dễ mất tập trung, ngại việc dài hạn buồn tẻ và nhạy cảm với chỉ trích.',car:['Sự kiện','Biểu diễn','Bán hàng','Du lịch','PR','Chăm sóc khách hàng']},
+  ENFP:{n:'Người Truyền Cảm Hứng',tag:'Campaigner',s:'Nhiệt huyết, sáng tạo và đầy ý tưởng. Bạn nhìn thấy tiềm năng ở mọi người, mọi việc và lan tỏa cảm hứng một cách tự nhiên.',st:'Sáng tạo, lôi cuốn, đồng cảm, linh hoạt, truyền động lực.',wk:'Dễ mất hứng giữa chừng, ôm quá nhiều việc và thiếu kỷ luật chi tiết.',car:['Marketing','Sáng tạo nội dung','Đào tạo','Khởi nghiệp','Truyền thông','Tư vấn']},
+  ENTP:{n:'Người Tranh Luận',tag:'Debater',s:'Thông minh, hoạt ngôn và thích thử thách ý tưởng. Bạn nhìn ra nhiều khả năng, mê tranh luận và luôn tìm cách làm mới mọi thứ.',st:'Nhanh trí, sáng tạo, hùng biện, dám thử nghiệm, thích nghi tốt.',wk:'Dễ chán, hay tranh luận để vui, ngại việc lặp lại và thiếu kiên trì theo đuổi đến cùng.',car:['Khởi nghiệp','Tư vấn chiến lược','Luật sư','Marketing','Sản phẩm','Sáng tạo']},
+  ESTJ:{n:'Nhà Điều Hành',tag:'Executive',s:'Quyết đoán, thực tế và giỏi tổ chức. Bạn thích đưa mọi thứ vào trật tự, dẫn dắt rõ ràng và đảm bảo công việc chạy đúng kế hoạch.',st:'Lãnh đạo, kỷ luật, thực tế, đáng tin, hiệu quả.',wk:'Đôi khi áp đặt, cứng nhắc và ít kiên nhẫn với cảm xúc hay sự mơ hồ.',car:['Quản lý','Vận hành','Tài chính','Quân đội/Cảnh sát','Luật','Kinh doanh']},
+  ESFJ:{n:'Người Quan Tâm',tag:'Consul',s:'Ấm áp, hòa đồng và tận tâm với cộng đồng. Bạn giỏi gắn kết mọi người, để ý nhu cầu của người khác và tạo bầu không khí hài hòa.',st:'Chu đáo, hợp tác, có trách nhiệm, giao tiếp tốt, đáng tin.',wk:'Quá để tâm đến đánh giá của người khác, ngại xung đột và dễ quên bản thân.',car:['Nhân sự','Y tế','Giáo dục','Sự kiện','Dịch vụ khách hàng','Quản lý cộng đồng']},
+  ENFJ:{n:'Người Cho Đi',tag:'Protagonist',s:'Truyền cảm hứng, ấm áp và giỏi dẫn dắt con người. Bạn nhìn thấy điều tốt nhất ở người khác và muốn giúp họ phát triển.',st:'Lãnh đạo bằng cảm hứng, đồng cảm, giao tiếp giỏi, tận tâm, có tầm nhìn.',wk:'Dễ ôm việc của người khác, quá lý tưởng và nhạy cảm với chỉ trích.',car:['Đào tạo','Quản lý nhân sự','Giáo dục','Tư vấn','Truyền thông','Lãnh đạo nhóm']},
+  ENTJ:{n:'Nhà Lãnh Đạo',tag:'Commander',s:'Quyết đoán, chiến lược và sinh ra để dẫn dắt. Bạn đặt mục tiêu lớn, tổ chức nguồn lực hiệu quả và thúc đẩy mọi người tiến về phía trước.',st:'Lãnh đạo mạnh mẽ, tư duy chiến lược, quyết đoán, tự tin, hiệu quả.',wk:'Đôi khi áp đặt, thiếu kiên nhẫn và xem nhẹ cảm xúc trong lúc theo đuổi mục tiêu.',car:['CEO/Quản lý cấp cao','Chiến lược','Đầu tư','Tư vấn','Khởi nghiệp','Luật']}
+};
+const ORDER=['ISTJ','ISFJ','INFJ','INTJ','ISTP','ISFP','INFP','INTP','ESTP','ESFP','ENFP','ENTP','ESTJ','ESFJ','ENFJ','ENTJ'];
+
+const DIMS={
+  EI:{first:'E',second:'I',fl:'Hướng ngoại (E)',sl:'Hướng nội (I)'},
+  SN:{first:'S',second:'N',fl:'Giác quan (S)',sl:'Trực giác (N)'},
+  TF:{first:'T',second:'F',fl:'Lý trí (T)',sl:'Cảm xúc (F)'},
+  JP:{first:'J',second:'P',fl:'Nguyên tắc (J)',sl:'Linh hoạt (P)'}
+};
+
+/* ============ TRẠNG THÁI ============ */
+let answers = new Array(QUESTIONS.length).fill(null);
+let idx = 0;
+let currentCode = null;
+const $=id=>document.getElementById(id);
+
+/* ---- điều hướng bài test ---- */
+function show(sec){ ['intro','quiz','result'].forEach(s=>$(s).classList.toggle('hidden', s!==sec)); window.scrollTo(0,0); }
+function start(){ answers=new Array(QUESTIONS.length).fill(null); idx=0; show('quiz'); render(); }
+function render(){
+  const q=QUESTIONS[idx];
+  $('qnum').textContent=`Câu ${idx+1} / ${QUESTIONS.length}`;
+  $('qtext').textContent=q.t;
+  $('bar').style.width=((idx)/QUESTIONS.length*100)+'%';
+  const opts=$('opts'); opts.innerHTML='';
+  SCALE.forEach(o=>{
+    const b=document.createElement('button');
+    b.className='opt'+(answers[idx]===o.v?' sel':'');
+    b.innerHTML=`<span class="dot"></span><span>${o.l}</span>`;
+    b.onclick=()=>{answers[idx]=o.v; render();};
+    opts.appendChild(b);
+  });
+  $('prev').style.visibility = idx===0?'hidden':'visible';
+  $('next').disabled = answers[idx]===null;
+  $('next').textContent = idx===QUESTIONS.length-1?'Xem kết quả ✦':'Tiếp tục →';
+}
+function next(){ if(answers[idx]===null) return;
+  if(idx<QUESTIONS.length-1){idx++; render(); window.scrollTo(0,0);} else finish(); }
+function prev(){ if(idx>0){idx--; render(); window.scrollTo(0,0);} }
+
+/* ---- tính điểm ---- */
+function compute(){
+  const score={EI:0,SN:0,TF:0,JP:0};
+  QUESTIONS.forEach((q,i)=>{ const v=answers[i]||0; score[q.dim]+= q.pole==='first'? v : -v; });
+  let code='', bars=[];
+  for(const d of ['EI','SN','TF','JP']){
+    const D=DIMS[d], s=score[d]; const first = s>0 || s===0;
+    code += first? D.first : D.second;
+    const max = QUESTIONS.filter(q=>q.dim===d).length*2;
+    const pct = Math.round(50 + (s/max)*50);
+    bars.push({D,pct,first});
+  }
+  return {code,bars};
+}
+
+/* ---- hiển thị kết quả ---- */
+function fillType(code){
+  const T=TYPES[code]; currentCode=code;
+  $('rcode').textContent=code; $('rname').textContent=T.n; $('rtag').textContent=T.tag;
+  $('rsum').textContent=T.s; $('rstr').textContent=T.st; $('rwk').textContent=T.wk;
+  $('rcar').innerHTML=T.car.map(c=>`<span class="tag">${c}</span>`).join('');
+}
+function renderBars(bars){
+  $('rbars').classList.remove('hidden');
+  $('rbars').innerHTML=bars.map(b=>{
+    const strongLeft=b.first, leftW=b.pct;
+    return `<div class="bar">
+      <div class="lbls"><span ${strongLeft?'':'style="color:var(--muted)"'}>${strongLeft?'<b>'+b.D.fl+'</b>':b.D.fl}</span>
+      <span ${strongLeft?'style="color:var(--muted)"':''}>${strongLeft?b.D.sl:'<b>'+b.D.sl+'</b>'}</span></div>
+      <div class="track"><i style="left:0;width:${strongLeft?leftW:0}%"></i>
+      <i style="right:0;width:${strongLeft?0:100-leftW}%"></i></div>
+    </div>`;
+  }).join('');
+}
+function finish(){
+  $('bar').style.width='100%';
+  const {code,bars}=compute();
+  $('sharedBanner').classList.add('hidden');
+  $('rkicker').textContent='KẾT QUẢ CỦA BẠN';
+  fillType(code); renderBars(bars);
+  history.replaceState(null,'', '#type='+code);
+  show('result');
+}
+/* mở thẳng kết quả khi vào bằng link chia sẻ (#type=XXXX) */
+function showSharedType(code){
+  $('sharedBanner').classList.remove('hidden');
+  $('sharedBanner').innerHTML=`👋 Đây là kết quả <b>${code}</b> được chia sẻ với bạn. Muốn biết mình thuộc nhóm nào? <a href="#" onclick="start();return false;"><b>Tự làm test ngay →</b></a>`;
+  $('rkicker').textContent='NHÓM TÍNH CÁCH';
+  $('rbars').classList.add('hidden');
+  $('retakeBtn').textContent='✦ Tự làm test cho mình';
+  fillType(code); show('result');
+}
+function restart(){ location.hash=''; start(); }
+
+/* ---- chia sẻ ---- */
+function baseUrl(){ return location.origin==='null' ? location.href.split('#')[0] : location.origin+location.pathname; }
+function resultUrl(code){ return baseUrl()+'#type='+code; }
+function shareText(code){ const T=TYPES[code];
+  return `Tôi là ${code} – ${T.n} trong trắc nghiệm MBTI! Bạn thuộc nhóm nào?`; }
+function toast(msg){ const t=$('toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2200); }
+function copyText(txt, msg){
+  if(navigator.clipboard && location.protocol!=='file:'){
+    navigator.clipboard.writeText(txt).then(()=>toast(msg),()=>fallbackCopy(txt,msg));
+  } else fallbackCopy(txt,msg);
+}
+function fallbackCopy(txt,msg){
+  const ta=document.createElement('textarea'); ta.value=txt; ta.style.position='fixed'; ta.style.opacity='0';
+  document.body.appendChild(ta); ta.select();
+  try{ document.execCommand('copy'); toast(msg);}catch(e){ prompt('Sao chép link:', txt);}
+  document.body.removeChild(ta);
+}
+function shareSite(){ copyText(baseUrl(), 'Đã copy link bài test — gửi cho bạn bè nhé!'); }
+function copyResultLink(){ copyText(resultUrl(currentCode), 'Đã copy link kết quả!'); }
+function shareFB(){ window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(resultUrl(currentCode)),'_blank','width=600,height=500'); }
+function shareX(){ window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(shareText(currentCode))+'&url='+encodeURIComponent(resultUrl(currentCode)),'_blank','width=600,height=500'); }
+function nativeShare(){
+  const data={title:'Trắc nghiệm MBTI', text:shareText(currentCode), url:resultUrl(currentCode)};
+  if(navigator.share){ navigator.share(data).catch(()=>{}); } else { copyResultLink(); }
+}
+
+/* ---- lưới 16 nhóm ---- */
+function buildGrid(el){
+  el.innerHTML=ORDER.map(c=>`<div class="mini" onclick="showType('${c}')">
+    <div class="c">${c}</div><div class="n">${TYPES[c].n}</div></div>`).join('');
+}
+function showType(c){ const T=TYPES[c];
+  alert(`${c} – ${T.n} (${T.tag})\n\n${T.s}\n\n★ Điểm mạnh: ${T.st}\n\n⚠ Lưu ý: ${T.wk}\n\n💼 Nghề phù hợp: ${T.car.join(', ')}`); }
+
+/* ---- khởi động: đọc URL ---- */
+function boot(){
+  buildGrid($('grid16intro')); buildGrid($('grid16res'));
+  const m=(location.hash||'').match(/type=([EI][SN][TF][JP])/i);
+  if(m){ const code=m[1].toUpperCase(); if(TYPES[code]){ showSharedType(code); return; } }
+  show('intro');
+}
+boot();
+</script>
+</body>
+</html>
